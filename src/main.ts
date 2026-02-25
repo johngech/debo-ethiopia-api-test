@@ -1,5 +1,6 @@
 import { CanceledError, AxiosError } from "axios";
-import {  projectService } from "./services/project-service";
+import { projectService } from "./services/project-service";
+import { authService } from "./services/token-base-api-client";
 
 const fetchResponse = async () => {
   try {
@@ -12,4 +13,16 @@ const fetchResponse = async () => {
   }
 };
 
-await fetchResponse();
+// await fetchResponse();
+
+authService
+  .login({
+    email: "",
+    password: "",
+  })
+  .then((response) => {
+    console.log(response);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
